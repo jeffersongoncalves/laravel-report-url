@@ -1,3 +1,5 @@
 <?php
 
-uses(JeffersonGoncalves\ReportUrl\Tests\TestCase::class)->in('Feature', 'Unit');
+use JeffersonGoncalves\ReportUrl\Tests\TestCase;
+
+uses(TestCase::class)->in('Feature');

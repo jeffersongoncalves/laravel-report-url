@@ -1,0 +1,42 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    public function up(): void
+    {
+        $name = config('report-url.table', 'report_urls');
+
+        // Republishing the migrations must not fail where this one already ran.
+        if (Schema::hasTable($name)) {
+            return;
+        }
+
+        Schema::create($name, function (Blueprint $table) {
+            $table->id();
+            $table->uuid('uuid')->unique();
+            // String keys: int, UUID or ULID owners.
+            $table->string('owner_type')->nullable();
+            $table->string('owner_id')->nullable();
+            $table->string('disk');
+            $table->string('path');
+            $table->string('file_name');
+            $table->string('mime_type')->nullable();
+            $table->unsignedBigInteger('size');
+            $table->timestamp('expires_at')->nullable()->index();
+            $table->unsignedInteger('downloads')->default(0);
+            $table->timestamp('last_downloaded_at')->nullable();
+            $table->timestamps();
+
+            $table->index(['owner_type', 'owner_id']);
+        });
+    }
+
+    public function down(): void
+    {
+        Schema::dropIfExists(config('report-url.table', 'report_urls'));
+    }
+};

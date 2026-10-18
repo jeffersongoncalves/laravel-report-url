@@ -3,14 +3,18 @@
 namespace JeffersonGoncalves\ReportUrl\Facades;
 
 use Illuminate\Support\Facades\Facade;
+use JeffersonGoncalves\ReportUrl\ReportUrlManager;
 
 /**
- * @see \JeffersonGoncalves\ReportUrl\ReportUrl
+ * @method static \JeffersonGoncalves\ReportUrl\Models\ReportUrl store(string $content, string $fileName, ?\Illuminate\Database\Eloquent\Model $owner = null, ?int $ttlMinutes = null)
+ * @method static \JeffersonGoncalves\ReportUrl\Models\ReportUrl storeFile(string $localPath, string $fileName, ?\Illuminate\Database\Eloquent\Model $owner = null, ?int $ttlMinutes = null)
+ *
+ * @see ReportUrlManager
  */
 class ReportUrl extends Facade
 {
     protected static function getFacadeAccessor(): string
     {
-        return 'laravel-report-url';
+        return ReportUrlManager::class;
     }
 }

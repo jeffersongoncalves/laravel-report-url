@@ -21,16 +21,20 @@
     ],
     "require": {
         "php": "^8.2",
-        "spatie/laravel-package-tools": "^1.16",
-        "illuminate/contracts": "^12.0|^13.0",
-        "laravel/framework": "^12.0|^13.0"
+        "laravel/framework": "^12.0|^13.0",
+        "spatie/laravel-package-tools": "^1.16"
     },
     "require-dev": {
+        "jeffersongoncalves/laravel-saved-filter": "^1.9",
+        "jeffersongoncalves/pest-plugin-database-migrations": "^1.0",
         "larastan/larastan": "^3.0",
         "laravel/pint": "^1.24",
         "orchestra/testbench": "^10.0|^11.0",
         "pestphp/pest": "^3.0|^4.0",
         "pestphp/pest-plugin-laravel": "^3.0|^4.0"
+    },
+    "suggest": {
+        "jeffersongoncalves/laravel-saved-filter": "Email scheduled reports too large to attach as temporary download links"
     },
     "autoload": {
         "psr-4": {
